@@ -1,0 +1,17 @@
+{
+    "name": "Meuble Driss",
+    "short_name": "Meuble Driss",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fdfdfc",
+    "theme_color": "#b45309",
+    "description": "Meuble & Ameublement de luxe",
+    "icons": [
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
