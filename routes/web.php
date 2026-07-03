@@ -35,6 +35,29 @@ Route::get('/logo', function () {
     return response($logoData)->header('Content-Type', $mimeType);
 });
 
+Route::get('/manifest.json', function () {
+    $societe = DB::table('societes')->first();
+    $appName = $societe && $societe->raison ? $societe->raison : config('app.name', 'Application');
+    
+    return response()->json([
+        'name' => $appName,
+        'short_name' => $appName,
+        'start_url' => '/',
+        'display' => 'standalone',
+        'background_color' => '#fdfdfc',
+        'theme_color' => '#b45309',
+        'description' => $societe && $societe->activite ? $societe->activite : 'Application',
+        'icons' => [
+            [
+                'src' => '/logo',
+                'sizes' => '512x512',
+                'type' => 'image/png',
+                'purpose' => 'any maskable'
+            ]
+        ]
+    ]);
+});
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/', function (Request $request) {

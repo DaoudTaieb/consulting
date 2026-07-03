@@ -17,13 +17,17 @@
     @vite('resources/js/app.js')
 
     <!-- PWA -->
+    @php
+        $societe = \Illuminate\Support\Facades\DB::table('societes')->first();
+        $appName = $societe && $societe->raison ? $societe->raison : config('app.name', 'Application');
+    @endphp
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#b45309">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Meuble Driss">
-    <link rel="apple-touch-icon" href="/icon-512.png">
+    <meta name="apple-mobile-web-app-title" content="{{ $appName }}">
+    <link rel="apple-touch-icon" href="/logo">
 
     @inertiaHead
 </head>
